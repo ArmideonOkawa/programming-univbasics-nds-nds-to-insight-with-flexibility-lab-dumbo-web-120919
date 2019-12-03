@@ -49,16 +49,16 @@ def movies_with_director_key(name, movies_collection)
   # :director_name key. This addition can be done by using the provided
   # movie_with_director_name method
   
-   result = []
+   movie_list = []
   i = 0
 
   while i < movies_collection.length do
     movie_data = movies_collection[i]
-    result << movie_with_director_name(name, movie_data)
+    movie_list << movie_with_director_name(name, movie_data)
     i += 1
   end
 
-  result
+  movie_list
 end
 
 
@@ -75,21 +75,21 @@ def gross_per_studio(collection)
   # Hash whose keys are the studio names and whose values are the sum
   # total of all the worldwide_gross numbers for every movie in the input Hash
   
-   result = {}
+   total_gross = {}
   i = 0
 
   while i < collection.length do
     movie = collection[i]
 
-    if !result[movie[:studio]]
-      result[movie[:studio]] = movie[:worldwide_gross]
+    if !total_gross[movie[:studio]]
+      total_gross[movie[:studio]] = movie[:worldwide_gross]
     else
-      result[movie[:studio]] += movie[:worldwide_gross]
+      total_gross[movie[:studio]] += movie[:worldwide_gross]
     end
     i += 1
   end
 
-  result
+  total_gross
 end
 
 def movies_with_directors_set(source)
